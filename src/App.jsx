@@ -1,11 +1,21 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { Component } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends Component{
+  constructor(props){
+    super(props)
+     this.state= {
+      count: 0
+     }
+  }
+  decrementNumber = () => {
+    this.setState({count: this.state.count - 1})
+ }
 
-  return (
+  render() {
+     return (
     <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -15,10 +25,14 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Vite + React + Microsoft</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <p>count {this.state.count}</p>
+        <button onClick={() => {this.setState({count: this.state.count + 1})}}>
+          Increment
+        </button>
+        <button onClick={this.decrementNumber}>
+          Decrement
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
@@ -29,6 +43,8 @@ function App() {
       </p>
     </div>
   )
+  }
+ 
 }
 
 export default App
